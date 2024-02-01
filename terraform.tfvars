@@ -1,0 +1,11 @@
+region              = "eu-central-1"
+vpc_cidr            = "10.0.0.0/16"
+subnet_cidr         = "10.0.0.0/24"
+availability_zone   = "eu-central-1a"
+allowed_ports       = [22, 80, 443]
+ami_id              = "ami-09024b009ae9e7adf"
+instance_type       = "t2.micro"
+subnet_name         = "Agnija-subnet"
+security_group_name = "Agnija-security-group"
+instance_name       = "Agnija-instance"
+user_data           = "user_data.sh"
