@@ -2,6 +2,37 @@ provider "aws" {
   region = var.region
 }
 
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  # Filter for images that are eligible for the AWS Free Tier
+  filter {
+    name   = "usage-operation"
+    values = ["RunInstances"]
+  }
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+}
+
 resource "aws_vpc" "Agnija_vpc" {
   cidr_block = var.vpc_cidr
 }
