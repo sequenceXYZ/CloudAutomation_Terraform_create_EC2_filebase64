@@ -90,3 +90,15 @@ resource "aws_instance" "Agnija_instance" {
     Name = var.instance_name
   }
 }
+
+output "instance_info" {
+  description = "Information about the latest AWS Free Tier instance"
+  value = {
+    instance_id   = aws_instance.Agnija_instance.id
+    public_ip     = aws_instance.Agnija_instance.public_ip
+    private_ip    = aws_instance.Agnija_instance.private_ip
+    instance_type = aws_instance.Agnija_instance.instance_type
+    ami_id        = aws_instance.Agnija_instance.ami
+  }
+}
+
